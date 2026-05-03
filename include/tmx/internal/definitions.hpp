@@ -1,6 +1,6 @@
 #pragma once
 
-#include "setup.hpp"
+#include "tmx/internal/setup.hpp"
 
 namespace tmx
 {
@@ -8,6 +8,12 @@ namespace tmx
     template<size_t R, size_t C, typename T> struct mat;
     template<typename T> struct quat;
     template<typename T> struct dQuat;
+
+
+
+    // Default type for Math:: functions, can be changed
+    typedef float Real;
+
 
 
     namespace internal

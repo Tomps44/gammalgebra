@@ -3,10 +3,10 @@
 
 namespace tmx
 {
-    namespace Vector
+    namespace Vec
     {
         template<size_t S, typename T>
-        TMX_INLINE constexpr vec<S, bool> greaterThan(const vec<S, T>& a, const vec<S, T>& b) noexcept
+        TMX_INLINE constexpr vec<S, bool> GreaterThan(const vec<S, T>& a, const vec<S, T>& b) noexcept
         {
             vec<S, bool> res = true;
 
@@ -17,7 +17,7 @@ namespace tmx
         }
 
         template<size_t S, typename T>
-        TMX_INLINE constexpr vec<S, bool> greaterThanOrEqual(const vec<S, T>& a, const vec<S, T>& b) noexcept
+        TMX_INLINE constexpr vec<S, bool> GreaterThanOrEqual(const vec<S, T>& a, const vec<S, T>& b) noexcept
         {
             vec<S, bool> res = true;
 
@@ -28,7 +28,7 @@ namespace tmx
         }
 
         template<size_t S, typename T>
-        TMX_INLINE constexpr vec<S, bool> lessThan(const vec<S, T>& a, const vec<S, T>& b) noexcept
+        TMX_INLINE constexpr vec<S, bool> LessThan(const vec<S, T>& a, const vec<S, T>& b) noexcept
         {
             vec<S, bool> res = true;
 
@@ -39,7 +39,7 @@ namespace tmx
         }
 
         template<size_t S, typename T>
-        TMX_INLINE constexpr vec<S, bool> lessThanOrEqual(const vec<S, T>& a, const vec<S, T>& b) noexcept
+        TMX_INLINE constexpr vec<S, bool> LessThanOrEqual(const vec<S, T>& a, const vec<S, T>& b) noexcept
         {
             vec<S, bool> res = true;
 
@@ -51,7 +51,7 @@ namespace tmx
 
 
         template<size_t S, typename T>
-        TMX_INLINE constexpr vec<S, bool> equal(const vec<S, T>& a, const vec<S, T>& b) noexcept
+        TMX_INLINE constexpr vec<S, bool> Equal(const vec<S, T>& a, const vec<S, T>& b) noexcept
         {
             vec<S, bool> res = true;
 
@@ -62,7 +62,7 @@ namespace tmx
         }
 
         template<size_t S, typename T>
-        TMX_INLINE constexpr vec<S, bool> notEqual(const vec<S, T>& a, const vec<S, T>& b) noexcept
+        TMX_INLINE constexpr vec<S, bool> NotEqual(const vec<S, T>& a, const vec<S, T>& b) noexcept
         {
             return ~equal(a, b);
         }
@@ -70,7 +70,7 @@ namespace tmx
 
 
         template<size_t S>
-        TMX_INLINE constexpr bool any(const vec<S, bool>& v) noexcept
+        TMX_INLINE constexpr bool Any(const vec<S, bool>& v) noexcept
         {
             bool res = false;
 
@@ -81,7 +81,7 @@ namespace tmx
         }
 
         template<size_t S>
-        TMX_INLINE constexpr bool all(const vec<S, bool>& v) noexcept
+        TMX_INLINE constexpr bool All(const vec<S, bool>& v) noexcept
         {
             bool res = true;
 
@@ -93,6 +93,6 @@ namespace tmx
 
     
 
-    } // namespace Vector
+    } // namespace Vec
     
 } // namespace tmx

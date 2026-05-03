@@ -11,11 +11,17 @@
 #include "tmx/internal/mat/type_mat4x4.hpp"
 
 #include "tmx/quat/quat_type.hpp"
-#include "tmx/quat/dualquat_type.hpp"
 
 #include "tmx/quat/interpolation.hpp"
 #include "tmx/quat/geometric.hpp"
 #include "tmx/quat/angle.hpp"
+#include "tmx/quat/exponential.hpp"
+
+
+#include "tmx/math/constants.hpp"
+#include "tmx/math/common.hpp"
+#include "tmx/math/exponential.hpp"
+#include "tmx/math/interpolation.hpp"
 
 
 namespace tmx
@@ -23,6 +29,14 @@ namespace tmx
 typedef tmx::mat<2, 2, float> Mat2x2;
 typedef tmx::mat<3, 3, float> Mat3x3;
 typedef tmx::mat<4, 4, float> Mat4x4;
+
+namespace Mat {}
+}
+
+namespace std
+{
+    typedef int32_t i32;
+    typedef uint32_t u32;
 }
 
 
@@ -67,27 +81,40 @@ void logQuat(const tmx::quat<T>& qua)
 
 
 
+
+
+
 int main()
 {
-    // std::cout << std::setprecision(30);
+    std::cout << std::setprecision(5);
 
     using namespace tmx;
+    using namespace Math;
 
 
-    QuatHighP q = Quaternion::slerp(Quaternion::fromEulerYXZ(10.0, 20.0, 30.0), Quaternion::fromEulerYXZ(45.0, -30.0, 60.0), 0.5);
 
-    logVec(Quaternion::toEulerYXZ(q));
+    std::cout << Math::InvLerp(-Math::PI, Math::PI, -HalfPI) << '\n';
+    std::cout << Math::SmoothStep(-Math::PI, Math::PI, -HalfPI) << '\n';
+    std::cout << Math::SmootherStep(-Math::PI, Math::PI, -HalfPI) << '\n';
 
-    // Need to make update the slerp for vectors (unit vectors)
+
+    std::cout << Map(3.0f, 0.0f, 6.0f, 5.0f, 10.0f) << '\n';
+
+    
+
+    
+    
+
 
     // For vectors, need to implement : 
-    // - Smooth Damp,
-    // - Move Towards
-    // - Step (for single numbers too)
-    // - Smooth Step (for single numbers too)
-    // - Smoother Step (for single numbers too)
-    // - Clamp Magnitude
-    // - Inverse Lerp (for single numbers too)
+    // - Step 
+    // - Smooth Step 
+    // - Smoother Step 
+    // - Inverse Lerp 
+
+    // - Change every lerp formula back to a + (b - a) * t,
+    //   instead of (1 - t) * a + b * t.
+    //   It gives the EXACT same results
     
     
     return 0;

@@ -25,7 +25,7 @@ namespace tmx
         {
             TMX_INLINE static constexpr vec<S, T> call(const vec<S, T>& v) noexcept
             {
-                return static_cast<T>(1) / Vector::sqrt(v);
+                return static_cast<T>(1) / Vec::Sqrt(v);
             }
         };
 
@@ -47,55 +47,60 @@ namespace tmx
         };
     }
 
-    namespace Vector
+    namespace Vec
     {
         template<size_t S, typename T>
-        TMX_INLINE constexpr vec<S, T> pow(const vec<S, T>& v, const vec<S, T>& exp) noexcept
+        TMX_INLINE constexpr vec<S, T> Pow(const vec<S, T>& v, const vec<S, T>& exp) noexcept
         {
             return internal::computeVec_twoElem<S, T>::call(std::pow, v, exp);
         }
         template<size_t S, typename T>
-        TMX_INLINE constexpr vec<S, T> pow(const vec<S, T>& v, T exp) noexcept
+        TMX_INLINE constexpr vec<S, T> Pow(const vec<S, T>& v, T exp) noexcept
         {
             return internal::computeVec_twoElem<S, T>::call(std::pow, v, vec<S, T>(exp));
         }
 
 
         template<size_t S, typename T>
-        TMX_INLINE constexpr vec<S, T> sqrt(const vec<S, T>& v) noexcept
+        TMX_INLINE constexpr vec<S, T> Sqrt(const vec<S, T>& v) noexcept
         {
             return internal::vecSqrt<S, T, internal::useSimd<S, T>::value>::call(v);
         }
         template<size_t S, typename T>
-        TMX_INLINE constexpr vec<S, T> invSqrt(const vec<S, T>& v) noexcept
+        TMX_INLINE constexpr vec<S, T> InvSqrt(const vec<S, T>& v) noexcept
         {
             return internal::vecInvSqrt<S, T, internal::useSimd<S, T>::value>::call(v);
         }
 
 
         template<size_t S, typename T>
-        TMX_INLINE constexpr vec<S, T> exp(const vec<S, T>& v) noexcept
+        TMX_INLINE constexpr vec<S, T> Exp(const vec<S, T>& v) noexcept
         {
             return internal::computeVec_oneElem<S, T>::call(std::exp, v);
         }
         template<size_t S, typename T>
-        TMX_INLINE constexpr vec<S, T> exp2(const vec<S, T>& v) noexcept
+        TMX_INLINE constexpr vec<S, T> Exp2(const vec<S, T>& v) noexcept
         {
             return internal::computeVec_oneElem<S, T>::call(std::exp2, v);
         }
 
 
         template<size_t S, typename T>
-        TMX_INLINE constexpr vec<S, T> log(const vec<S, T>& v) noexcept
+        TMX_INLINE constexpr vec<S, T> Log(const vec<S, T>& v) noexcept
         {
             return internal::computeVec_oneElem<S, T>::call(std::log, v);
         }
         template<size_t S, typename T>
-        TMX_INLINE constexpr vec<S, T> log2(const vec<S, T>& v) noexcept
+        TMX_INLINE constexpr vec<S, T> Log2(const vec<S, T>& v) noexcept
         {
             return internal::computeVec_oneElem<S, T>::call(std::log2, v);
         }       
+        template<size_t S, typename T>
+        TMX_INLINE constexpr vec<S, T> Log10(const vec<S, T>& v) noexcept
+        {
+            return internal::computeVec_oneElem<S, T>::call(std::log10, v);
+        }       
         
 
-    } // namespace Vector
+    } // namespace Vec
 } // namespace tmx

@@ -4,20 +4,26 @@
 
 namespace tmx
 {
-    namespace Quaternion
+    namespace Qua
     {
         template<typename T>
-        TMX_INLINE constexpr T dot(const quat<T>& a, const quat<T>& b) noexcept;
+        TMX_INLINE constexpr T Dot(const quat<T>& a, const quat<T>& b) noexcept;
 
         template<typename T>
-        TMX_INLINE constexpr T length(const quat<T>& q) noexcept;
+        TMX_INLINE constexpr T Length(const quat<T>& q) noexcept;
         template<typename T>
-        TMX_INLINE constexpr T lengthSquared(const quat<T>& q) noexcept;
+        TMX_INLINE constexpr T LengthSquared(const quat<T>& q) noexcept;
 
         template<typename T>
-        TMX_INLINE constexpr quat<T> normalize(const quat<T>& q) noexcept;
+        TMX_INLINE constexpr quat<T> Normalize(const quat<T>& q) noexcept;
 
-    } // namespace Quaternion
+        template<typename T>
+        TMX_INLINE constexpr quat<T> Conjugate(const quat<T>& q) noexcept;
+        
+        template<typename T>
+        TMX_INLINE constexpr quat<T> Inverse(const quat<T>& q) noexcept;
+
+    } // namespace Qua
 
 } // namespace tmx
 

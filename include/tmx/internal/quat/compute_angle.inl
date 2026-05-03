@@ -2,10 +2,10 @@
 
 namespace tmx
 {
-    namespace Quaternion
+    namespace Qua
     {
         template<typename T>
-        TMX_INLINE constexpr quat<T> fromAxisAngle(const vec<3, T>& u, T angle) noexcept
+        TMX_INLINE constexpr quat<T> FromAxisAngle(const vec<3, T>& u, T angle) noexcept
         {
             const T halfAng = angle * static_cast<T>(0.5); 
             const T sinHalfAng = std::sin(halfAng); 
@@ -18,16 +18,146 @@ namespace tmx
             );
         }
 
+        // ------------------------------------------------------
+        //                 from/to Euler wrapper
+        // ------------------------------------------------------
+
+        template<typename T, RotationOrder rotOrder, RotationMode rotMode>
+        TMX_INLINE constexpr quat<T> FromEuler(T x, T y, T z) noexcept
+        {
+            if constexpr (rotMode == RotationMode::Intrinsic)
+            {
+                if constexpr (rotOrder == RotationOrder::XYZ)
+                {
+                    return Qua::FromEulerXYZ(x, y, z);
+                }
+                else if constexpr (rotOrder == RotationOrder::XZY)
+                {
+                    return Qua::FromEulerXZY(x, y, z);
+                }
+                else if constexpr (rotOrder == RotationOrder::YXZ)
+                {
+                    return Qua::FromEulerYXZ(x, y, z);
+                }
+                else if constexpr (rotOrder == RotationOrder::YZX)
+                {
+                    return Qua::FromEulerYZX(x, y, z);
+                }
+                else if constexpr (rotOrder == RotationOrder::ZXY)
+                {
+                    return Qua::FromEulerZXY(x, y, z);
+                }
+                else // rotOrder = RotationOrder::ZYX
+                {
+                    return Qua::FromEulerZYX(x, y, z);
+                }
+            }
+            else // rotMode = RotationMode::Extrinsic
+            {
+                if constexpr (rotOrder == RotationOrder::XYZ)
+                {
+                    return Qua::FromEulerZYX(x, y, z);
+                }
+                else if constexpr (rotOrder == RotationOrder::XZY)
+                {
+                    return Qua::FromEulerYZX(x, y, z);
+                }
+                else if constexpr (rotOrder == RotationOrder::YXZ)
+                {
+                    return Qua::FromEulerZXY(x, y, z);
+                }
+                else if constexpr (rotOrder == RotationOrder::YZX)
+                {
+                    return Qua::FromEulerXZY(x, y, z);
+                }
+                else if constexpr (rotOrder == RotationOrder::ZXY)
+                {
+                    return Qua::FromEulerYXZ(x, y, z);
+                }
+                else // rotOrder = RotationOrder::ZYX
+                {
+                    return Qua::FromEulerXYZ(x, y, z);
+                }
+            }
+        }
+
+
+        template<typename T, RotationOrder rotOrder, RotationMode rotMode>
+        TMX_INLINE constexpr vec<3, T> ToEuler(const quat<T>& q) noexcept
+        {
+            if constexpr (rotMode == RotationMode::Intrinsic)
+            {
+                if constexpr (rotOrder == RotationOrder::XYZ)
+                {
+                    return Qua::ToEulerXYZ(q);
+                }
+                else if constexpr (rotOrder == RotationOrder::XZY)
+                {
+                    return Qua::ToEulerXZY(q);
+                }
+                else if constexpr (rotOrder == RotationOrder::YXZ)
+                {
+                    return Qua::ToEulerYXZ(q);
+                }
+                else if constexpr (rotOrder == RotationOrder::YZX)
+                {
+                    return Qua::ToEulerYZX(q);
+                }
+                else if constexpr (rotOrder == RotationOrder::ZXY)
+                {
+                    return Qua::ToEulerZXY(q);
+                }
+                else // rotOrder = RotationOrder::ZYX
+                {
+                    return Qua::ToEulerZYX(q);
+                }
+            }
+            else // rotMode = RotationMode::Extrinsic
+            {
+                if constexpr (rotOrder == RotationOrder::XYZ)
+                {
+                    return Qua::ToEulerZYX(q);
+                }
+                else if constexpr (rotOrder == RotationOrder::XZY)
+                {
+                    return Qua::ToEulerYZX(q);
+                }
+                else if constexpr (rotOrder == RotationOrder::YXZ)
+                {
+                    return Qua::ToEulerZXY(q);
+                }
+                else if constexpr (rotOrder == RotationOrder::YZX)
+                {
+                    return Qua::ToEulerXZY(q);
+                }
+                else if constexpr (rotOrder == RotationOrder::ZXY)
+                {
+                    return Qua::ToEulerYXZ(q);
+                }
+                else // rotOrder = RotationOrder::ZYX
+                {
+                    return Qua::ToEulerXYZ(q);
+                }
+            }
+        }
+
+        // ToEuler...
+
+        // template<typename T>
+        // TMX_INLINE constexpr quat<T> FromEuler<T, RotationOrder::XYZ, RotationMode::Intrinsic>(T x, T y, T z) noexcept
+        // {
+        //     return Qua::FromEulerXYZ(x, y, z);
+        // }
 
 
         // ------------------------------------------------------
-        //                  fromEuler functions
+        //                  FromEuler functions
         // ------------------------------------------------------
 
 
 
         template<typename T>
-        TMX_INLINE constexpr quat<T> fromEulerXYZ(T x, T y, T z) noexcept
+        TMX_INLINE constexpr quat<T> FromEulerXYZ(T x, T y, T z) noexcept
         {
             const T halfX = x * static_cast<T>(0.5) * static_cast<T>(0.0174532925199432957691391462423657899L);
             const T halfY = y * static_cast<T>(0.5) * static_cast<T>(0.0174532925199432957691391462423657899L);
@@ -49,7 +179,7 @@ namespace tmx
             );
         }
         template<typename T>
-        TMX_INLINE constexpr quat<T> fromEulerXZY(T x, T y, T z) noexcept
+        TMX_INLINE constexpr quat<T> FromEulerXZY(T x, T y, T z) noexcept
         {
             const T halfX = x * static_cast<T>(0.5) * static_cast<T>(0.0174532925199432957691391462423657899L);
             const T halfY = y * static_cast<T>(0.5) * static_cast<T>(0.0174532925199432957691391462423657899L);
@@ -71,7 +201,7 @@ namespace tmx
             );
         }
         template<typename T>
-        TMX_INLINE constexpr quat<T> fromEulerYXZ(T x, T y, T z) noexcept
+        TMX_INLINE constexpr quat<T> FromEulerYXZ(T x, T y, T z) noexcept
         {
             const T halfX = x * static_cast<T>(0.5) * static_cast<T>(0.0174532925199432957691391462423657899L);
             const T halfY = y * static_cast<T>(0.5) * static_cast<T>(0.0174532925199432957691391462423657899L);
@@ -93,7 +223,7 @@ namespace tmx
             );
         }
         template<typename T>
-        TMX_INLINE constexpr quat<T> fromEulerYZX(T x, T y, T z) noexcept
+        TMX_INLINE constexpr quat<T> FromEulerYZX(T x, T y, T z) noexcept
         {
             const T halfX = x * static_cast<T>(0.5) * static_cast<T>(0.0174532925199432957691391462423657899L);
             const T halfY = y * static_cast<T>(0.5) * static_cast<T>(0.0174532925199432957691391462423657899L);
@@ -115,7 +245,7 @@ namespace tmx
             );
         }
         template<typename T>
-        TMX_INLINE constexpr quat<T> fromEulerZXY(T x, T y, T z) noexcept
+        TMX_INLINE constexpr quat<T> FromEulerZXY(T x, T y, T z) noexcept
         {
             const T halfX = x * static_cast<T>(0.5) * static_cast<T>(0.0174532925199432957691391462423657899L);
             const T halfY = y * static_cast<T>(0.5) * static_cast<T>(0.0174532925199432957691391462423657899L);
@@ -137,7 +267,7 @@ namespace tmx
             );
         }
         template<typename T>
-        TMX_INLINE constexpr quat<T> fromEulerZYX(T x, T y, T z) noexcept
+        TMX_INLINE constexpr quat<T> FromEulerZYX(T x, T y, T z) noexcept
         {
             const T halfX = x * static_cast<T>(0.5) * static_cast<T>(0.0174532925199432957691391462423657899L);
             const T halfY = y * static_cast<T>(0.5) * static_cast<T>(0.0174532925199432957691391462423657899L);
@@ -161,7 +291,7 @@ namespace tmx
 
 
         // ------------------------------------------------------
-        //                  toEuler functions
+        //                  ToEuler functions
         // ------------------------------------------------------
 
         // Here's a Quaternion converted into a 3x3 Matrix
@@ -198,7 +328,7 @@ namespace tmx
 
 
         template<typename T>
-        TMX_INLINE constexpr vec<3, T> toEulerXYZ(const quat<T>& q) noexcept
+        TMX_INLINE constexpr vec<3, T> ToEulerXYZ(const quat<T>& q) noexcept
         {
             const T sy = static_cast<T>(2) * (q.x * q.z + q.w * q.y);
             const T sySq = sy * sy;
@@ -232,7 +362,7 @@ namespace tmx
         }
 
         template<typename T>
-        TMX_INLINE constexpr vec<3, T> toEulerXZY(const quat<T>& q) noexcept
+        TMX_INLINE constexpr vec<3, T> ToEulerXZY(const quat<T>& q) noexcept
         {
             const T sz = -(static_cast<T>(2) * (q.x * q.y - q.w * q.z));
             const T szSq = sz * sz;
@@ -264,7 +394,7 @@ namespace tmx
         }
 
         template<typename T>
-        TMX_INLINE constexpr vec<3, T> toEulerYXZ(const quat<T>& q) noexcept
+        TMX_INLINE constexpr vec<3, T> ToEulerYXZ(const quat<T>& q) noexcept
         {
             const T sx = -(static_cast<T>(2) * (q.y * q.z - q.w * q.x));
             const T sxSq = sx * sx;
@@ -296,7 +426,7 @@ namespace tmx
         }
 
         template<typename T>
-        TMX_INLINE constexpr vec<3, T> toEulerYZX(const quat<T>& q) noexcept
+        TMX_INLINE constexpr vec<3, T> ToEulerYZX(const quat<T>& q) noexcept
         {
             const T sz = static_cast<T>(2) * (q.x * q.y + q.w * q.z);
             const T szSq = sz * sz;
@@ -327,7 +457,7 @@ namespace tmx
         }
 
         template<typename T>
-        TMX_INLINE constexpr vec<3, T> toEulerZXY(const quat<T>& q) noexcept
+        TMX_INLINE constexpr vec<3, T> ToEulerZXY(const quat<T>& q) noexcept
         {
             const T sx = static_cast<T>(2) * (q.y * q.z + q.w * q.x);
             const T sxSq = sx * sx;
@@ -359,7 +489,7 @@ namespace tmx
         }
 
         template<typename T>
-        TMX_INLINE constexpr vec<3, T> toEulerZYX(const quat<T>& q) noexcept
+        TMX_INLINE constexpr vec<3, T> ToEulerZYX(const quat<T>& q) noexcept
         {
             const T sy = -(static_cast<T>(2) * (q.x * q.z - q.w * q.y));
             const T sySq = sy * sy;
@@ -389,6 +519,6 @@ namespace tmx
             return res * static_cast<T>(57.2957795130823208766546184023127353);
         }
 
-    } // namespace Quaternion
+    } // namespace Qua
     
 } // namespace tmx

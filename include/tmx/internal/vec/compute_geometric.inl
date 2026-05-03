@@ -93,7 +93,7 @@ namespace tmx
         {
             TMX_INLINE static constexpr T call(const vec<S, T>& a, const vec<S, T>& b) noexcept
             {
-                return Vector::length(b - a);
+                return Vec::Length(b - a);
             }
         };
 
@@ -104,80 +104,105 @@ namespace tmx
             TMX_INLINE static constexpr vec<S, T> call(const vec<S, T>& v) noexcept
             {
                 return vec<S, T>(
-                    v / Vector::length(v)
+                    v / Vec::Length(v)
                 );
             }
         };
         
     } // namespace internal
     
-    namespace Vector
+    namespace Vec
     {
         template<size_t S, typename T>
-        TMX_INLINE constexpr T dot(const vec<S, T>& a, const vec<S, T>& b) noexcept
+        TMX_INLINE constexpr T Dot(const vec<S, T>& a, const vec<S, T>& b) noexcept
         {
             return internal::vecDot<S, T, internal::useSimd<S, T>::value>::call(a, b);
         }
 
         template<size_t S, typename T>
-        TMX_INLINE constexpr T length(const vec<S, T>& v) noexcept
+        TMX_INLINE constexpr T Length(const vec<S, T>& v) noexcept
         {
             return internal::vecLength<S, T, internal::useSimd<S, T>::value>::call(v);
         }
 
         template<size_t S, typename T>
-        TMX_INLINE constexpr T lengthSquared(const vec<S, T>& v) noexcept
+        TMX_INLINE constexpr T LengthSquared(const vec<S, T>& v) noexcept
         {
             return internal::vecDot<S, T, internal::useSimd<S, T>::value>::call(v, v);
         }
 
         template<size_t S, typename T>
-        TMX_INLINE constexpr T distance(const vec<S, T>& a, const vec<S, T>& b) noexcept
+        TMX_INLINE constexpr T Distance(const vec<S, T>& a, const vec<S, T>& b) noexcept
         {
             return internal::vecDistance<S, T, internal::useSimd<S, T>::value>::call(a, b);
         }
 
         template<size_t S, typename T>
-        TMX_INLINE constexpr T distanceSquared(const vec<S, T>& a, const vec<S, T>& b) noexcept
+        TMX_INLINE constexpr T DistanceSquared(const vec<S, T>& a, const vec<S, T>& b) noexcept
         {
             return internal::vecDot<S, T, internal::useSimd<S, T>::value>::call(b - a, b - a);
         }
 
         template<size_t S, typename T>
-        TMX_INLINE constexpr vec<S, T> normalize(const vec<S, T>& v) noexcept
+        TMX_INLINE constexpr vec<S, T> Normalize(const vec<S, T>& v) noexcept
         {
             return internal::vecNormalize<S, T, internal::useSimd<S, T>::value>::call(v);
         }
 
         template<size_t S, typename T>
-        TMX_INLINE constexpr vec<S, T> cross(const vec<S, T>& a, const vec<S, T>& b) noexcept
+        TMX_INLINE constexpr vec<S, T> Cross(const vec<S, T>& a, const vec<S, T>& b) noexcept
         {
             return internal::vecCross<S, T, internal::useSimd<S, T>::value>::call(a, b);
         }
 
         template<size_t S, typename T>
-        TMX_INLINE constexpr vec<S, T> faceForward(const vec<S, T>& N, const vec<S, T>& I, const vec<S, T>& Nref) noexcept
+        TMX_INLINE constexpr vec<S, T> FaceForward(const vec<S, T>& N, const vec<S, T>& I, const vec<S, T>& Nref) noexcept
         {
-            return dot(Nref, I) < static_cast<T>(0) ? N : -N;
+            return Vec::Dot(Nref, I) < static_cast<T>(0) ? N : -N;
         }
 
         template<size_t S, typename T>
-        TMX_INLINE constexpr vec<S, T> reflect(const vec<S, T>& I, const vec<S, T>& N) noexcept
+        TMX_INLINE constexpr vec<S, T> Reflect(const vec<S, T>& I, const vec<S, T>& N) noexcept
         {
-            return I - N * dot(N, I) * static_cast<T>(2);
+            return I - N * Vec::Dot(N, I) * static_cast<T>(2);
         }
 
         template<size_t S, typename T>
-        TMX_INLINE constexpr vec<S, T> refract(const vec<S, T>& I, const vec<S, T>& N, T eta) noexcept
+        TMX_INLINE constexpr vec<S, T> Refract(const vec<S, T>& I, const vec<S, T>& N, T eta) noexcept
         {
-            T dotVal = dot(N, I);
+            T dotVal = Vec::Dot(N, I);
             T k = static_cast<T>(1) - eta * eta * (static_cast<T>(1) - dotVal * dotVal);
 
             vec<S, T> res = (k >= static_cast<T>(0)) ? (eta * I - (eta * dotVal + std::sqrt(k) * N)) : vec<S, T>(static_cast<T>(0));
             
             return res;
         }
+
+        template<size_t S, typename T>
+        TMX_INLINE constexpr vec<S, T> Project(const vec<S, T>& proj, const vec<S, T>& base) noexcept
+        {
+            // base * ( proj • base / ||base||² )
+            //                       base • base
+
+            return base * 
+                (internal::vecDot<S, T, internal::useSimd<S, T>::value>::call(proj, base) / 
+                internal::vecDot<S, T, internal::useSimd<S, T>::value>::call(base, base));
+        }
+
+
+        template<size_t S, typename T>
+        TMX_INLINE constexpr vec<S, T> ClampMagnitude(const vec<S, T>& v, T maxLength) noexcept
+        {
+            T sqMag = Vec::LengthSquared(v);
+
+            if (sqMag > maxLength * maxLength)
+            {
+                return (v / std::sqrt(sqMag)) * maxLength;
+            }
+
+            return v;
+        }
         
 
-    } // namespace Vector
+    } // namespace Vec
 }

@@ -22,7 +22,7 @@ namespace tmx
 
     template<typename T>
     TMX_INLINE constexpr quat<T>::quat() noexcept
-    : w(1), x(0), y(0), z(0)
+    : w(static_cast<T>(1)), x(static_cast<T>(0)), y(static_cast<T>(0)), z(static_cast<T>(0))
     {}
 
     // --- Accessors ---
@@ -122,17 +122,18 @@ namespace tmx
     {
         return internal::quatMul<T, internal::useSimd<4, T>::value>::call(q, scalar);
     }
+    /// @param rot UNIT QUAT !!!
+    /// @param point 
+    /// @return 
     template<typename T>
     TMX_INLINE constexpr vec<3, T> operator*(const quat<T>& rot, const vec<3, T>& point) noexcept
     {
-        // TODO
+        const vec<3, T> u(rot.x, rot.y, rot.z);
 
-        // quat normQ = normalized(rot)
-        // vec3 u = (normQ.x, normQ.y, normQ.z)
-        //
-        // vec3 t = cross(u, point) * 2
-        //
-        // vec3 final = point + (t * normQ.w) + cross(u, t)
+        const vec<3, T> t = Vec::Cross(u, point) * static_cast<T>(2);
+
+
+        return point + (t * rot.w) + Vec::Cross(u, t);
     }
 
 

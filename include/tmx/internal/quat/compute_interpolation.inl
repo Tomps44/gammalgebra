@@ -1,5 +1,6 @@
 #include "tmx/quat/geometric.hpp"
-#include <cmath>
+// #include <cmath>
+#include "tmx/quat/exponential.hpp"
 
 namespace tmx
 {
@@ -10,7 +11,14 @@ namespace tmx
         {
             TMX_INLINE static constexpr quat<T> call(const quat<T>& start, const quat<T>& end, T t) noexcept
             {
-                return start + (end - start) * t;
+                quat<T> e = end;
+
+                if (Qua::Dot(start, e) < static_cast<T>(0))
+                {
+                    e = -e;
+                }
+
+                return Qua::Normalize((static_cast<T>(1) - t) * start + e * t);
             }
         };
 
@@ -20,7 +28,7 @@ namespace tmx
             TMX_INLINE static constexpr quat<T> call(const quat<T>& start, const quat<T>& end, T t) noexcept
             {
                 quat<T> e = end;
-                T dot = Quaternion::dot(start, e);
+                T dot = Qua::Dot(start, e);
 
                 if (dot < static_cast<T>(0.0))
                 {
@@ -28,7 +36,7 @@ namespace tmx
                     dot = -dot;
                 }
 
-                if (std::abs(dot) > static_cast<T>(0.9995))
+                if (dot > static_cast<T>(0.9995))
                 {
                     return internal::quatLerpUnclamped<T, internal::useSimd<4, T>::value>::call(start, end, t);
                 }
@@ -48,10 +56,10 @@ namespace tmx
 
 
 
-    namespace Quaternion
+    namespace Qua
     {    
         template<typename T>
-        TMX_INLINE constexpr quat<T> lerp(const quat<T>& start, const quat<T>& end, T t) noexcept
+        TMX_INLINE constexpr quat<T> Lerp(const quat<T>& start, const quat<T>& end, T t) noexcept
         {
             // clamps t between 0 and 1
             t = std::min(std::max(t, static_cast<T>(0)), static_cast<T>(1));
@@ -59,24 +67,27 @@ namespace tmx
             return internal::quatLerpUnclamped<T, internal::useSimd<4, T>::value>::call(start, end, t);
         }
         template<typename T>
-        TMX_INLINE constexpr quat<T> lerpUnclamped(const quat<T>& start, const quat<T>& end, T t) noexcept
+        TMX_INLINE constexpr quat<T> LerpUnclamped(const quat<T>& start, const quat<T>& end, T t) noexcept
         {
             return internal::quatLerpUnclamped<T, internal::useSimd<4, T>::value>::call(start, end, t);
         }
         template<typename T>
-        TMX_INLINE constexpr quat<T> slerp(const quat<T>& start, const quat<T>& end, T t) noexcept
+        TMX_INLINE constexpr quat<T> Slerp(const quat<T>& start, const quat<T>& end, T t) noexcept
         {
             // clamps t between 0 and 1
             t = std::min(std::max(t, static_cast<T>(0)), static_cast<T>(1));
 
+            // return Qua::slerpUnclamped(start, end, t);
             return internal::quatSlerpUnclamped<T, internal::useSimd<4, T>::value>::call(start, end, t);
         }
         template<typename T>
-        TMX_INLINE constexpr quat<T> slerpUnclamped(const quat<T>& start, const quat<T>& end, T t) noexcept
+        TMX_INLINE constexpr quat<T> SlerpUnclamped(const quat<T>& start, const quat<T>& end, T t) noexcept
         {
+            // return Qua::normalize( start * Qua::pow(Qua::conjugate(start) * end, t) );
+
             return internal::quatSlerpUnclamped<T, internal::useSimd<4, T>::value>::call(start, end, t);
         }
 
-    } // namespace Vector
+    } // namespace Qua
 
 } // namespace tmx

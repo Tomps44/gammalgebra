@@ -32,7 +32,7 @@ namespace tmx
 
 
         TMX_INLINE constexpr colType& operator[](size_t i);
-        TMX_INLINE constexpr const colType operator[](size_t i) const;
+        TMX_INLINE constexpr const colType& operator[](size_t i) const;
 
 
         TMX_INLINE constexpr mat<4, 4, T>& operator=(const mat<4, 4, T>& m) noexcept = default;

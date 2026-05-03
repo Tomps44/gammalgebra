@@ -4,38 +4,42 @@
 
 namespace tmx
 {
-    namespace Vector
+    namespace Vec
     {
         template<size_t S, typename T>
-        TMX_INLINE constexpr vec<S, T> min(const vec<S, T>& a, const vec<S, T>& b) noexcept;
+        TMX_INLINE constexpr vec<S, T> Min(const vec<S, T>& a, const vec<S, T>& b) noexcept;
         template<size_t S, typename T>
-        TMX_INLINE constexpr vec<S, T> min(const vec<S, T>& v, T scalar) noexcept;
+        TMX_INLINE constexpr vec<S, T> Min(const vec<S, T>& v, T scalar) noexcept;
         template<size_t S, typename T>
-        TMX_INLINE constexpr vec<S, T> max(const vec<S, T>& a, const vec<S, T>& b) noexcept;
+        TMX_INLINE constexpr vec<S, T> Max(const vec<S, T>& a, const vec<S, T>& b) noexcept;
         template<size_t S, typename T>
-        TMX_INLINE constexpr vec<S, T> max(const vec<S, T>& v, T scalar) noexcept;
+        TMX_INLINE constexpr vec<S, T> Max(const vec<S, T>& v, T scalar) noexcept;
 
         template<size_t S, typename T>
-        TMX_INLINE constexpr vec<S, T> abs(const vec<S, T>& v) noexcept;
+        TMX_INLINE constexpr vec<S, T> Abs(const vec<S, T>& v) noexcept;
 
         template<size_t S, typename T>
-        TMX_INLINE constexpr vec<S, T> clamp(const vec<S, T>& v, const vec<S, T>& minVal, const vec<S, T>& mxVal) noexcept;
+        TMX_INLINE constexpr vec<S, T> Clamp(const vec<S, T>& v, const vec<S, T>& minVal, const vec<S, T>& mxVal) noexcept;
         template<size_t S, typename T>
-        TMX_INLINE constexpr vec<S, T> clamp(const vec<S, T>& v, T minVal, T mxVal) noexcept;
+        TMX_INLINE constexpr vec<S, T> Clamp(const vec<S, T>& v, T minVal, T mxVal) noexcept;
+        template<size_t S, typename T>
+        TMX_INLINE constexpr vec<S, T> Clamp01(const vec<S, T>& v) noexcept;
+        template<size_t S, typename T>
+        TMX_INLINE constexpr vec<S, T> Saturate(const vec<S, T>& v) noexcept;
 
         template<size_t S, typename T>
-        TMX_INLINE constexpr vec<S, T> floor(const vec<S, T>& v) noexcept;
+        TMX_INLINE constexpr vec<S, T> Floor(const vec<S, T>& v) noexcept;
         template<size_t S, typename T>
-        TMX_INLINE constexpr vec<S, T> ceil(const vec<S, T>& v) noexcept;
+        TMX_INLINE constexpr vec<S, T> Ceil(const vec<S, T>& v) noexcept;
         template<size_t S, typename T>
-        TMX_INLINE constexpr vec<S, T> round(const vec<S, T>& v) noexcept;
+        TMX_INLINE constexpr vec<S, T> Round(const vec<S, T>& v) noexcept;
         template<size_t S, typename T>
-        TMX_INLINE constexpr vec<S, T> trunc(const vec<S, T>& v) noexcept;
+        TMX_INLINE constexpr vec<S, T> Trunc(const vec<S, T>& v) noexcept;
 
         template<size_t S, typename T>
-        TMX_INLINE constexpr vec<S, T> mod(const vec<S, T>& v, const vec<S, T>& modulus) noexcept;
+        TMX_INLINE constexpr vec<S, T> Mod(const vec<S, T>& v, const vec<S, T>& modulus) noexcept;
         template<size_t S, typename T>
-        TMX_INLINE constexpr vec<S, T> mod(const vec<S, T>& v, T modulus) noexcept;
+        TMX_INLINE constexpr vec<S, T> Mod(const vec<S, T>& v, T modulus) noexcept;
     }
 }
 

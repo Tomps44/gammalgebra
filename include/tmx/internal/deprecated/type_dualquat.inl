@@ -1,3 +1,16 @@
+/** 
+ * -------------------------------------------------------------
+ * 
+ * This file is deprecated !
+ * Dual Quaternions will maybe be implemented in a later version.
+ * For now, do not include any of that :
+ * 
+ * --------------------------------------------------------------
+ */
+
+
+
+
 namespace tmx
 {
     // --- Constructors ---
@@ -9,7 +22,7 @@ namespace tmx
 
     template<typename T>
     TMX_INLINE constexpr dQuat<T>::dQuat(const quat<T>& rot, const vec<3, T>& trsl) noexcept
-    : real(rot), dual(0.5 * (quat<T>(0, trsl)) * rot)
+    : real(rot), dual((static_cast<T>(0.5) * (quat<T>(0, trsl))) * rot)
     {}
 
     template<typename T>
@@ -24,7 +37,7 @@ namespace tmx
 
     template<typename T>
     TMX_INLINE constexpr dQuat<T>::dQuat(const vec<3, T>& trsl) noexcept
-    : real(quat<T>()), dual(quat<T>(0, trsl * 0.5))
+    : real(quat<T>()), dual(quat<T>(0, trsl * static_cast<T>(0.5)))
     {}
 
     template<typename T>

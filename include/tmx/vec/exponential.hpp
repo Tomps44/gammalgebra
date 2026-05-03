@@ -4,27 +4,29 @@
 
 namespace tmx
 {
-    namespace Vector
+    namespace Vec
     {
         template<size_t S, typename T>
-        TMX_INLINE constexpr vec<S, T> pow(const vec<S, T>& v, const vec<S, T>& exponent) noexcept;
+        TMX_INLINE constexpr vec<S, T> Pow(const vec<S, T>& v, const vec<S, T>& exponent) noexcept;
         template<size_t S, typename T>
-        TMX_INLINE constexpr vec<S, T> pow(const vec<S, T>& v, T exponent) noexcept;
+        TMX_INLINE constexpr vec<S, T> Pow(const vec<S, T>& v, T exponent) noexcept;
 
         template<size_t S, typename T>
-        TMX_INLINE constexpr vec<S, T> sqrt(const vec<S, T>& v) noexcept;
+        TMX_INLINE constexpr vec<S, T> Sqrt(const vec<S, T>& v) noexcept;
         template<size_t S, typename T>
-        TMX_INLINE constexpr vec<S, T> invSqrt(const vec<S, T>& v) noexcept;
+        TMX_INLINE constexpr vec<S, T> InvSqrt(const vec<S, T>& v) noexcept;
 
         template<size_t S, typename T>
-        TMX_INLINE constexpr vec<S, T> exp(const vec<S, T>& v) noexcept;
+        TMX_INLINE constexpr vec<S, T> Exp(const vec<S, T>& v) noexcept;
         template<size_t S, typename T>
-        TMX_INLINE constexpr vec<S, T> exp2(const vec<S, T>& v) noexcept;
+        TMX_INLINE constexpr vec<S, T> Exp2(const vec<S, T>& v) noexcept;
 
         template<size_t S, typename T>
-        TMX_INLINE constexpr vec<S, T> log(const vec<S, T>& v) noexcept;
+        TMX_INLINE constexpr vec<S, T> Log(const vec<S, T>& v) noexcept;
         template<size_t S, typename T>
-        TMX_INLINE constexpr vec<S, T> log2(const vec<S, T>& v) noexcept;
+        TMX_INLINE constexpr vec<S, T> Log2(const vec<S, T>& v) noexcept;
+        template<size_t S, typename T>
+        TMX_INLINE constexpr vec<S, T> Log10(const vec<S, T>& v) noexcept;
     }
 }
 

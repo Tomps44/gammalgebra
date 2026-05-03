@@ -1,6 +1,8 @@
 #pragma once
 
-#include <stdint.h>
+#include <cstdint>
+
+
 
 
 #if defined(_MSC_VER)
