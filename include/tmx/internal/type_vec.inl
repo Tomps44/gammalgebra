@@ -199,6 +199,27 @@ namespace tmx
         return !(a == b);
     }
 
+    template<int S, typename T>
+    TMX_INLINE constexpr bool operator<(const vec<S, T>& a, const vec<S, T>& b) noexcept
+    {
+        return internal::vecLess<S, T, std::numeric_limits<T>::is_iec559>::call(a, b);
+    }
+    template<int S, typename T>
+    TMX_INLINE constexpr bool operator<=(const vec<S, T>& a, const vec<S, T>& b) noexcept
+    {
+        return internal::vecLessOrEqual<S, T, std::numeric_limits<T>::is_iec559>::call(a, b);
+    }
+    template<int S, typename T>
+    TMX_INLINE constexpr bool operator>(const vec<S, T>& a, const vec<S, T>& b) noexcept
+    {
+        return internal::vecGreater<S, T, std::numeric_limits<T>::is_iec559>::call(a, b);
+    }
+    template<int S, typename T>
+    TMX_INLINE constexpr bool operator>=(const vec<S, T>& a, const vec<S, T>& b) noexcept
+    {
+        return internal::vecGreaterOrEqual<S, T, std::numeric_limits<T>::is_iec559>::call(a, b);
+    }
+
 
 
 

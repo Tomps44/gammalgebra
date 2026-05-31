@@ -101,6 +101,7 @@ namespace tmx
                     return tmxDetail::ToEuler_ZYX(q);
 
                 #endif
+                
 #           else // TMX_SET_ROTATION_TYPE_EXTRINSIC
 #               if defined(TMX_SET_ROTATION_ORDER_XYZ)
                     return tmxDetail::ToEuler_ZYX(q);

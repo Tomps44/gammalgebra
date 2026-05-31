@@ -14,21 +14,7 @@ namespace tmx
         {
             TMX_INLINE static mat<4, 4, float> call(const mat<4, 4, float>& m) noexcept
             {
-                // __m128 tmp0 = _mm_shuffle_ps(m[0].reg, m[1].reg, 0x44);
-	            // __m128 tmp2 = _mm_shuffle_ps(m[0].reg, m[1].reg, 0xEE);
-	            // __m128 tmp1 = _mm_shuffle_ps(m[2].reg, m[3].reg, 0x44);
-	            // __m128 tmp3 = _mm_shuffle_ps(m[2].reg, m[3].reg, 0xEE);
-
-				// mat<4, 4, float> res;
-                        
-	            // res[0].reg = _mm_shuffle_ps(tmp0, tmp1, 0x88);
-	            // res[1].reg = _mm_shuffle_ps(tmp0, tmp1, 0xDD);
-	            // res[2].reg = _mm_shuffle_ps(tmp2, tmp3, 0x88);
-	            // res[3].reg = _mm_shuffle_ps(tmp2, tmp3, 0xDD);
-
-				// return res;
-
-				mat<4, 4, float> res = m;
+                mat<4, 4, float> res = m;
 
 				_MM_TRANSPOSE4_PS(res[0].reg, res[1].reg, res[2].reg, res[3].reg);
 

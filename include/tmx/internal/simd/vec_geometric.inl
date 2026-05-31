@@ -64,7 +64,7 @@ namespace tmx
 
 	        return sub;
         }
-
+        
 
 
         TMX_INLINE static __m128 vecNormalize__m128(__m128 v) noexcept

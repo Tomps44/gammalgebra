@@ -34,6 +34,15 @@ namespace tmx
 
         template<int S, typename T, bool isFloating>
         struct vecEqual {};
+
+        template<int S, typename T, bool isFloating>
+        struct vecLess {};
+        template<int S, typename T, bool isFloating>
+        struct vecLessOrEqual {};
+        template<int S, typename T, bool isFloating>
+        struct vecGreater {};
+        template<int S, typename T, bool isFloating>
+        struct vecGreaterOrEqual {};
     
 
 
@@ -251,6 +260,142 @@ namespace tmx
 
             }
         };
+
+
+
+        template<typename T, bool isFloating>
+        struct vecLess<2, T, isFloating>
+        {
+            TMX_INLINE constexpr static bool call(const vec<2, T>& a, const vec<2, T>& b) noexcept
+            {
+                if (!internal::computeEqual<T, isFloating>::call(a.x, b.x)) return a.x < b.x;
+                return a.y < b.y;
+            }
+        };
+        template<typename T, bool isFloating>
+        struct vecLess<3, T, isFloating>
+        {
+            TMX_INLINE constexpr static bool call(const vec<3, T>& a, const vec<3, T>& b) noexcept
+            {
+                if (!internal::computeEqual<T, isFloating>::call(a.x, b.x)) return a.x < b.x;
+                else if (!internal::computeEqual<T, isFloating>::call(a.y, b.y)) return a.y < b.y;
+                return a.z < b.z;
+            }
+        };
+        template<typename T, bool isFloating>
+        struct vecLess<4, T, isFloating>
+        {
+            TMX_INLINE constexpr static bool call(const vec<4, T>& a, const vec<4, T>& b) noexcept
+            {
+                if (!internal::computeEqual<T, isFloating>::call(a.x, b.x)) return a.x < b.x;
+                else if (!internal::computeEqual<T, isFloating>::call(a.y, b.y)) return a.y < b.y;
+                else if (!internal::computeEqual<T, isFloating>::call(a.z, b.z)) return a.z < b.z;
+                return a.w < b.w;
+            }
+        };
+
+
+        template<typename T, bool isFloating>
+        struct vecLessOrEqual<2, T, isFloating>
+        {
+            TMX_INLINE constexpr static bool call(const vec<2, T>& a, const vec<2, T>& b) noexcept
+            {
+                if (!internal::computeEqual<T, isFloating>::call(a.x, b.x)) return a.x <= b.x;
+                return a.y <= b.y;
+            }
+        };
+        template<typename T, bool isFloating>
+        struct vecLessOrEqual<3, T, isFloating>
+        {
+            TMX_INLINE constexpr static bool call(const vec<3, T>& a, const vec<3, T>& b) noexcept
+            {
+                if (!internal::computeEqual<T, isFloating>::call(a.x, b.x)) return a.x <= b.x;
+                else if (!internal::computeEqual<T, isFloating>::call(a.y, b.y)) return a.y <= b.y;
+                return a.z <= b.z;
+            }
+        };
+        template<typename T, bool isFloating>
+        struct vecLessOrEqual<4, T, isFloating>
+        {
+            TMX_INLINE constexpr static bool call(const vec<4, T>& a, const vec<4, T>& b) noexcept
+            {
+                if (!internal::computeEqual<T, isFloating>::call(a.x, b.x)) return a.x <= b.x;
+                else if (!internal::computeEqual<T, isFloating>::call(a.y, b.y)) return a.y <= b.y;
+                else if (!internal::computeEqual<T, isFloating>::call(a.z, b.z)) return a.z <= b.z;
+                return a.w <= b.w;
+            }
+        };
+
+
+        template<typename T, bool isFloating>
+        struct vecGreater<2, T, isFloating>
+        {
+            TMX_INLINE constexpr static bool call(const vec<2, T>& a, const vec<2, T>& b) noexcept
+            {
+                if (!internal::computeEqual<T, isFloating>::call(a.x, b.x)) return a.x > b.x;
+                return a.y > b.y;
+            }
+        };
+        template<typename T, bool isFloating>
+        struct vecGreater<3, T, isFloating>
+        {
+            TMX_INLINE constexpr static bool call(const vec<3, T>& a, const vec<3, T>& b) noexcept
+            {
+                if (!internal::computeEqual<T, isFloating>::call(a.x, b.x)) return a.x > b.x;
+                else if (!internal::computeEqual<T, isFloating>::call(a.y, b.y)) return a.y > b.y;
+                return a.z > b.z;
+            }
+        };
+        template<typename T, bool isFloating>
+        struct vecGreater<4, T, isFloating>
+        {
+            TMX_INLINE constexpr static bool call(const vec<4, T>& a, const vec<4, T>& b) noexcept
+            {
+                if (!internal::computeEqual<T, isFloating>::call(a.x, b.x)) return a.x > b.x;
+                else if (!internal::computeEqual<T, isFloating>::call(a.y, b.y)) return a.y > b.y;
+                else if (!internal::computeEqual<T, isFloating>::call(a.z, b.z)) return a.z > b.z;
+                return a.w > b.w;
+            }
+        };
+
+
+        template<typename T, bool isFloating>
+        struct vecGreaterOrEqual<2, T, isFloating>
+        {
+            TMX_INLINE constexpr static bool call(const vec<2, T>& a, const vec<2, T>& b) noexcept
+            {
+                if (!internal::computeEqual<T, isFloating>::call(a.x, b.x)) return a.x >= b.x;
+                return a.y >= b.y;
+            }
+        };
+        template<typename T, bool isFloating>
+        struct vecGreaterOrEqual<3, T, isFloating>
+        {
+            TMX_INLINE constexpr static bool call(const vec<3, T>& a, const vec<3, T>& b) noexcept
+            {
+                if (!internal::computeEqual<T, isFloating>::call(a.x, b.x)) return a.x >= b.x;
+                else if (!internal::computeEqual<T, isFloating>::call(a.y, b.y)) return a.y >= b.y;
+                return a.z >= b.z;
+            }
+        };
+        template<typename T, bool isFloating>
+        struct vecGreaterOrEqual<4, T, isFloating>
+        {
+            TMX_INLINE constexpr static bool call(const vec<4, T>& a, const vec<4, T>& b) noexcept
+            {
+                if (!internal::computeEqual<T, isFloating>::call(a.x, b.x)) return a.x >= b.x;
+                else if (!internal::computeEqual<T, isFloating>::call(a.y, b.y)) return a.y >= b.y;
+                else if (!internal::computeEqual<T, isFloating>::call(a.z, b.z)) return a.z >= b.z;
+                return a.w >= b.w;
+            }
+        };
+
+        // template<int S, typename T, bool isFloating>
+        // struct vecLessOrEqual {};
+        // template<int S, typename T, bool isFloating>
+        // struct vecGreater {};
+        // template<int S, typename T, bool isFloating>
+        // struct vecGreaterOrEqual {};
         
     }
 }

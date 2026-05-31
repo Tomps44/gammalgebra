@@ -24,6 +24,8 @@
 
 #include "tmx/math/functions.hpp"
 
+#include "tmx/internal/hash.hpp"
+
 
 template<typename T>
 void logVal(T val) 
@@ -86,17 +88,12 @@ int main()
     using namespace Math;
 
 
-    
-
-    // Need to paste this at the start of every single file...
-    // And also need to change the name (TomPS44) to something a little more professional
-    // git remote set-url origin https://github.com/.../TMathX.git
 
 /***********************************************************************************/
 /*                   This file is part of the TMathX library                       */
 /***********************************************************************************/
 /*                                                                                 */
-/*  Copyright (c) 2026 TomPS44                                                     */
+/*  Copyright (c) 2026 Tomps44                                                     */
 /*                                                                                 */
 /*  Permission is hereby granted, free of charge, to any person obtaining a copy   */
 /*  of this software and associated documentation files (the "Software"), to deal  */
@@ -119,8 +116,25 @@ int main()
 /***********************************************************************************/
     
 
-  
+    /** Need to add in the Math namespace :
+     * Floor/Ceil/Truc...ToInt
+     * WrapAngle (keeps it between 0 and 2PI)
+     * LerpAngle (lerp with shortest path)
+     * IsPOwerOfTwo and NextPowerOfTwo
+     * IsNaN and IsInf
+     * Equal(with epsilon) and IsZero
+     * BitCast ??
+     * Clz (Count Leading Zeros) and Popcount (amount of bits set to 1)
+     */
+
+    // And also think of a new name, which would sound good in its abbreviated form (in the namespace), and goes well with other libraries
+
+
+
+
     return 0;
 }
+
+
 
 

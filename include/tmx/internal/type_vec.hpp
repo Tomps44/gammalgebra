@@ -90,6 +90,15 @@ namespace tmx
     template<int S, typename T>
     TMX_INLINE constexpr bool operator!=(const vec<S, T>& a, const vec<S, T>& b) noexcept;
 
+    template<int S, typename T>
+    TMX_INLINE constexpr bool operator<(const vec<S, T>& a, const vec<S, T>& b) noexcept;
+    template<int S, typename T>
+    TMX_INLINE constexpr bool operator<=(const vec<S, T>& a, const vec<S, T>& b) noexcept;
+    template<int S, typename T>
+    TMX_INLINE constexpr bool operator>(const vec<S, T>& a, const vec<S, T>& b) noexcept;
+    template<int S, typename T>
+    TMX_INLINE constexpr bool operator>=(const vec<S, T>& a, const vec<S, T>& b) noexcept;
+
     // --- Unary Bitwise operators
 
     template<int S, typename T>

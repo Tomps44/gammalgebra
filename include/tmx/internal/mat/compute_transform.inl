@@ -1,4 +1,4 @@
-#include "tmx/quat/angle.hpp"
+#include "tmx/quat/euler.hpp"
 
 namespace tmx
 {

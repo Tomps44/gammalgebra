@@ -4,6 +4,27 @@
 
 namespace tmx
 {
+    namespace tmxDetail
+    {
+        template<typename T>
+        TMX_INLINE constexpr vec<3, T> unitX = vec<3, T>(static_cast<T>(1), static_cast<T>(0), static_cast<T>(0));
+    
+        template<typename T>
+        TMX_INLINE constexpr vec<3, T> unitY = vec<3, T>(static_cast<T>(0), static_cast<T>(1), static_cast<T>(0));
+    
+        template<typename T>
+        TMX_INLINE constexpr vec<3, T> unitZ = vec<3, T>(static_cast<T>(0), static_cast<T>(0), static_cast<T>(1));
+
+        template<typename T>
+        TMX_INLINE constexpr vec<3, T> zero = vec<3, T>();
+
+        template<typename T>
+        TMX_INLINE constexpr vec<3, T> one = vec<3, T>(static_cast<T>(1), static_cast<T>(1), static_cast<T>(1));
+        
+    
+    } // namespace tmxDetail
+
+
     namespace Vec
     {
         template<typename From, typename To>
@@ -98,5 +119,22 @@ namespace tmx
         {
             return vec<S, T>(v.w);
         }
+
+
+
+        TMX_INLINE constexpr vec<3, float> UnitX = tmxDetail::unitX<float>;
+        TMX_INLINE constexpr vec<3, float> UnitY = tmxDetail::unitY<float>;
+        TMX_INLINE constexpr vec<3, float> UnitZ = tmxDetail::unitZ<float>;
+        TMX_INLINE constexpr vec<3, float> Zero = tmxDetail::zero<float>;
+        TMX_INLINE constexpr vec<3, float> One = tmxDetail::one<float>;
+        
+        TMX_INLINE constexpr vec<3, int32_t> UnitXInt = tmxDetail::unitX<int32_t>;
+        TMX_INLINE constexpr vec<3, int32_t> UnitYInt = tmxDetail::unitY<int32_t>;
+        TMX_INLINE constexpr vec<3, int32_t> UnitZInt = tmxDetail::unitZ<int32_t>;
+        TMX_INLINE constexpr vec<3, int32_t> ZeroInt = tmxDetail::zero<int32_t>;
+        TMX_INLINE constexpr vec<3, int32_t> OneInt = tmxDetail::one<int32_t>;
+
     }
+
+    
 }

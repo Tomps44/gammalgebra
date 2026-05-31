@@ -26,6 +26,11 @@ namespace tmx
     {}
 
     template<typename T>
+    TMX_INLINE constexpr mat<4, 4, T>::mat(const colType& diag) noexcept
+    : columns{colType(diag.x, 0, 0, 0), colType(0, diag.y, 0, 0), colType(0, 0, diag.z, 0), colType(0, 0, 0, diag.w)}
+    {}
+
+    template<typename T>
     TMX_INLINE constexpr mat<4, 4, T>::mat(const mat<4, 4, T>& m) noexcept
     : columns{colType(m[0]), colType(m[1]), colType(m[2]), colType(m[3])}
     {}

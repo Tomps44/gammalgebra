@@ -1,6 +1,6 @@
 #pragma once
 
-#include "tmx/mat/rotate.hpp"
+#include "tmx/mat/rotation.hpp"
 #include "tmx/mat/translate.hpp"
 #include "tmx/mat/scale.hpp"
 

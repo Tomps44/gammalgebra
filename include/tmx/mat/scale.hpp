@@ -8,7 +8,12 @@ namespace tmx
     namespace Mat
     {
         template<typename T>
-        TMX_INLINE constexpr mat<4, 4, T> Translate(const vec<3, T>& trsl) noexcept;
+        TMX_INLINE constexpr mat<3, 3, T> Scale_3x3(const vec<3, T>& scale) noexcept;
+        
+        template<typename T>
+        TMX_INLINE constexpr mat<4, 4, T> Scale_4x4(const vec<3, T>& scale) noexcept;
+
+
 
     } // namespace Mat
     

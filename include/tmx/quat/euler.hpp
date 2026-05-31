@@ -103,4 +103,4 @@ namespace tmx
 
 } // namespace tmx
 
-#include "tmx/internal/quat/compute_angle.inl"
+#include "tmx/internal/quat/compute_euler.inl"

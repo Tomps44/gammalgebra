@@ -88,21 +88,6 @@ namespace tmx
             return internal::quatSlerpUnclamped<T, internal::useSimd<4, T>::value>::call(start, end, t);
         }
 
-
-        template<typename T>
-        TMX_INLINE constexpr vec<3, T> RotatePoint(const quat<T>& rot, const vec<3, T>& point) noexcept
-        {
-            return rot * point;
-        }
-
-        template<typename T>
-        TMX_INLINE constexpr vec<3, T> RotatePointAroundPivot(const quat<T>& rot, const vec<3, T>& point, const vec<3, T>& pivot) noexcept
-        {
-            // We rotate (pivot - point) by rot, then add again pivot 
-
-            return pivot + (Qua::Conjugate(rot) * (pivot - point));
-        }
-
     } // namespace Qua
 
 } // namespace tmx
