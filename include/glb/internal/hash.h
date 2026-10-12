@@ -1,14 +1,14 @@
 #pragma once
 
-#include "vec/type-vec2.h"
-#include "vec/type-vec3.h"
-#include "vec/type-vec4.h"
+#include "vec/type_vec2.h"
+#include "vec/type_vec3.h"
+#include "vec/type_vec4.h"
 
-#include "mat/type-mat2x2.h"
-#include "mat/type-mat3x3.h"
-#include "mat/type-mat4x4.h"
+#include "mat/type_mat2x2.h"
+#include "mat/type_mat3x3.h"
+#include "mat/type_mat4x4.h"
 
-#include "type-quat.h"
+#include "type_quat.h"
 
 #include <functional>
 

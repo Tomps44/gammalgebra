@@ -14,5 +14,8 @@ target_include_directories(
     $<INSTALL_INTERFACE:include>
 )
 
+# add_executable(gam-tests main.cpp)
+# target_link_libraries(gam-tests PUBLIC gammalgebra)
+
 
 

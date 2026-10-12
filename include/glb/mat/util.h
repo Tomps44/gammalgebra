@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../internal/type-mat.h"
+#include "../internal/type_mat.h"
 #include "../vec/util.h"
 
 namespace glb

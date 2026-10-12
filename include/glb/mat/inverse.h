@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../internal/type-mat.h"
+#include "../internal/type_mat.h"
 
 namespace glb
 {
@@ -30,4 +30,4 @@ namespace glb
     
 } // namespace glb
 
-#include "../internal/mat/compute-inverse.inl"
+#include "../internal/mat/compute_inverse.inl"

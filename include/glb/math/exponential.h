@@ -47,4 +47,4 @@ namespace glb
     } // namespace Math
 } // namespace glb
 
-#include "../internal/math/compute-exponential.inl"
+#include "../internal/math/compute_exponential.inl"

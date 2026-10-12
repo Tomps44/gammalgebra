@@ -71,4 +71,4 @@ namespace glb
     } // namespace Math
 } // namespace glb
 
-#include "../internal/math/compute-common.inl"
+#include "../internal/math/compute_common.inl"

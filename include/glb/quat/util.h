@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../internal/type-quat.h"
+#include "../internal/type_quat.h"
 
 namespace glb
 {

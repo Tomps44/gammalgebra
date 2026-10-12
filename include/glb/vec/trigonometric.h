@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../internal/type-vec.h"
+#include "../internal/type_vec.h"
 
 namespace glb
 {
@@ -59,4 +59,4 @@ namespace glb
     } // namespace Vec
 }
 
-#include "../internal/vec/compute-trigonometric.inl"
+#include "../internal/vec/compute_trigonometric.inl"

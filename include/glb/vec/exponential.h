@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../internal/type-vec.h"
+#include "../internal/type_vec.h"
 
 namespace glb
 {
@@ -30,4 +30,4 @@ namespace glb
     }
 }
 
-#include "../internal/vec/compute-exponential.inl"
+#include "../internal/vec/compute_exponential.inl"

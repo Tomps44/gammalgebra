@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../internal/type-quat.h"
+#include "../internal/type_quat.h"
 
 namespace glb
 {
@@ -30,4 +30,4 @@ namespace glb
     
 } // namespace glb
 
-#include "../internal/quat/compute-interpolation.inl"
+#include "../internal/quat/compute_interpolation.inl"

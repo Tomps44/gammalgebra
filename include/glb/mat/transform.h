@@ -4,8 +4,8 @@
 #include "translate.h"
 #include "scale.h"
 
-#include "../internal/type-quat.h"
-#include "../internal/type-vec.h"
+#include "../internal/type_quat.h"
+#include "../internal/type_vec.h"
 
 namespace glb
 {
@@ -28,4 +28,4 @@ namespace glb
 
 }
 
-#include "../internal/mat/compute-transform.inl"
+#include "../internal/mat/compute_transform.inl"

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../internal/type-mat.h"
-#include "../internal/type-vec.h"
+#include "../internal/type_mat.h"
+#include "../internal/type_vec.h"
 
 namespace glb
 {
@@ -29,4 +29,4 @@ namespace glb
     
 } // namespace glb
 
-#include "../internal/mat/compute-geometric.inl"
+#include "../internal/mat/compute_geometric.inl"

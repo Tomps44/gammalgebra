@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../internal/type-vec.h"
+#include "../internal/type_vec.h"
 
 namespace glb
 {
@@ -27,4 +27,4 @@ namespace glb
     } // namespace Vec
 } // namespace glb
 
-#include "../internal/vec/compute-interpolation.inl"
+#include "../internal/vec/compute_interpolation.inl"

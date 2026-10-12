@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../internal/type-vec.h"
+#include "../internal/type_vec.h"
 
 namespace glb
 {
@@ -29,4 +29,4 @@ namespace glb
     } // namespace Vector
 } // namespace glb
 
-#include "../internal/vec/compute-relational.inl"
+#include "../internal/vec/compute_relational.inl"

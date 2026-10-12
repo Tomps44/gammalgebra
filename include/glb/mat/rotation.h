@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../internal/type-mat.h"
-#include "../internal/type-quat.h"
+#include "../internal/type_mat.h"
+#include "../internal/type_quat.h"
 
 namespace glb
 {
@@ -153,4 +153,4 @@ namespace glb
 
 } // namespace glb
 
-#include "../internal/mat/compute-rotation.inl"
+#include "../internal/mat/compute_rotation.inl"

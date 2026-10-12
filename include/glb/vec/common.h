@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../internal/type-vec.h"
+#include "../internal/type_vec.h"
 
 namespace glb
 {
@@ -43,4 +43,4 @@ namespace glb
     }
 }
 
-#include "../internal/vec/compute-common.inl"
+#include "../internal/vec/compute_common.inl"

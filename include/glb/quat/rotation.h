@@ -1,8 +1,8 @@
 #pragma once
 
-#include "../internal/type-quat.h"
-#include "../internal/type-vec.h"
-#include "../internal/type-mat.h"
+#include "../internal/type_quat.h"
+#include "../internal/type_vec.h"
+#include "../internal/type_mat.h"
 
 namespace glb
 {
@@ -41,4 +41,4 @@ namespace glb
     
 } // namespace glb
 
-#include "../internal/quat/compute-rotation.inl"
+#include "../internal/quat/compute_rotation.inl"

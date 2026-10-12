@@ -22,7 +22,7 @@ int main()
 }
 ```
 
-### Using the library
+### - Using the library
 
 #### Before including the library, you need to define multiple macros :
 

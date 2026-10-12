@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../internal/type-quat.h"
-#include "../internal/type-vec.h"
+#include "../internal/type_quat.h"
+#include "../internal/type_vec.h"
 
 namespace glb
 {
@@ -161,4 +161,4 @@ namespace glb
 
 } // namespace glb
 
-#include "../internal/quat/compute-euler.inl"
+#include "../internal/quat/compute_euler.inl"
