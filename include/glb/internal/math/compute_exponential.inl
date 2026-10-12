@@ -6,30 +6,6 @@ namespace glb
 {
     namespace Math
     {
-        template<std::integral Int>
-        GLB_INLINE constexpr Int Pow(Int val, Int exponent) noexcept
-        {
-            Int sum = 1;
-
-            for (Int i = 0; i < exponent; i++)
-            {
-                sum *= val;
-            }
-
-            return sum;
-        }
-        template<std::floating_point F>
-        GLB_INLINE constexpr F Pow(F val, F exponent) noexcept
-        {
-            return std::pow(val, exponent);
-        }
-        
-        
-        template<typename T>
-        GLB_INLINE constexpr T Sqrt(T val) noexcept
-        {
-            return std::sqrt(val);
-        }
         GLB_INLINE float FastInvSqrt(float val) noexcept
         {
             float tmp = val;
@@ -53,34 +29,6 @@ namespace glb
         GLB_INLINE constexpr T Cbrt(T val) noexcept
         {
             return std::pow(val, static_cast<T>(0.33333333333333333333333333333L));
-        }
-
-
-
-        template<typename T>
-        GLB_INLINE constexpr T Exp(T exponent) noexcept
-        {
-            return std::exp(exponent);
-        }
-        template<typename T>
-        GLB_INLINE constexpr T Exp2(T exponent) noexcept
-        {
-            return std::exp2(exponent);
-        }
-        template<typename T>
-        GLB_INLINE constexpr T Log(T val) noexcept
-        {
-            return std::log(val);
-        }
-        template<typename T>
-        GLB_INLINE constexpr T Log2(T val) noexcept
-        {
-            return std::log2(val);
-        }
-        template<typename T>
-        GLB_INLINE constexpr T Log10(T val) noexcept
-        {
-            return std::log10(val);
         }
 
 

@@ -42,19 +42,6 @@ namespace glb
         }
 
 
-    
-        template<typename T>
-        GLB_INLINE constexpr T Abs(T val) noexcept { return std::abs(val); };
-
-
-        template<typename T>
-        GLB_INLINE constexpr T Round(T val) noexcept { return std::round(val); };
-        template<typename T>
-        GLB_INLINE constexpr T Floor(T val) noexcept { return std::floor(val); };
-        template<typename T>
-        GLB_INLINE constexpr T Ceil(T val) noexcept { return std::ceil(val); };
-        template<typename T>
-        GLB_INLINE constexpr T Trunc(T val) noexcept { return std::trunc(val); };
         template<typename T>
         GLB_INLINE constexpr T Fract(T val) noexcept 
         {
@@ -79,9 +66,6 @@ namespace glb
             return static_cast<int32_t>(std::trunc(val));
         }
 
-
-        template<typename T>
-        GLB_INLINE constexpr T Mod(T val, T modulus) noexcept { return std::fmod(val, modulus); };
 
 
         template<typename T>

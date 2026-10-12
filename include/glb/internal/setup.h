@@ -170,22 +170,6 @@
 #endif
 
 
-#if !defined(GLB_SIMD_NONE)
-#   if defined(GLB_COMPILER_MSVC) 
-#        define GLB_ALIGN_(type) __declspec(align(sizeof(type) * 4))
-    
-#   else
-#       define GLB_ALIGN_(type) __attribute__((aligned(sizeof(type) * 4)))
-
-#   endif
-    
-#else
-#   define GLB_ALIGN_(type) 
-
-#endif
-
-
-
 
 #if defined(GLB_FORCE_ALWAYS_INLINE)
 #   if defined(GLB_COMPILER_MSVC)
@@ -208,6 +192,6 @@
  * 
  * Ex: Version 1.4.28 = 1004028
  */
-#define GLB_VERSION 1004004
+#define GLB_VERSION 1005000
 
 

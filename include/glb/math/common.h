@@ -26,28 +26,12 @@ namespace glb
 
 
         template<typename T>
-        GLB_INLINE constexpr T Abs(T val) noexcept;
-
-
-        template<typename T>
-        GLB_INLINE constexpr T Round(T val) noexcept;
-        template<typename T>
-        GLB_INLINE constexpr T Floor(T val) noexcept;
-        template<typename T>
-        GLB_INLINE constexpr T Ceil(T val) noexcept;
-        template<typename T>
-        GLB_INLINE constexpr T Trunc(T val) noexcept;
-        template<typename T>
         GLB_INLINE constexpr T Fract(T val) noexcept;
 
         GLB_INLINE constexpr int32_t RoundToInt(float val) noexcept;
         GLB_INLINE constexpr int32_t FloorToInt(float val) noexcept;
         GLB_INLINE constexpr int32_t CeilToInt(float val) noexcept;
         GLB_INLINE constexpr int32_t TruncToInt(float val) noexcept;
-
-
-        template<typename T>
-        GLB_INLINE constexpr T Mod(T val, T modulus) noexcept;
 
 
         template<typename T>
