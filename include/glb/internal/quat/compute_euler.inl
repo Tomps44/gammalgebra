@@ -2,7 +2,7 @@
 
 namespace glb
 {
-    namespace Qua
+    namespace Qtr
     {
         template<typename T>
         GLB_INLINE constexpr glbQuat_T<T> FromAxisAngle(const glbVec_T<3, T>& u, T angle) noexcept
@@ -126,7 +126,7 @@ namespace glb
 #           endif
         }
     
-    } // namespace Qua
+    } // namespace Qtr
 
         
 

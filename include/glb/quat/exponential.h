@@ -4,7 +4,7 @@
 
 namespace glb
 {
-    namespace Qua
+    namespace Qtr
     {
         /**
          * @brief Calculates the exponent of the Quaternion `q`, and returns a new Quaternion. 
@@ -41,7 +41,7 @@ namespace glb
         template<typename T>
         GLB_INLINE constexpr glbQuat_T<T> Sqrt(const glbQuat_T<T>& q) noexcept;
 
-    } // namespace Qua
+    } // namespace Qtr
     
 } // namespace glb
 

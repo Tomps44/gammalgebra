@@ -4,7 +4,7 @@
 
 namespace glb
 {
-    namespace Qua
+    namespace Qtr
     {
         /** @brief Linearly interpolates between the two Quaternions `start` and `end`, by a factor of `t`. 
          */

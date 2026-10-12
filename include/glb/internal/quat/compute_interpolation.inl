@@ -12,12 +12,12 @@ namespace glb
             {
                 glbQuat_T<T> e = end;
 
-                if (Qua::Dot(start, e) < static_cast<T>(0))
+                if (Qtr::Dot(start, e) < static_cast<T>(0))
                 {
                     e = -e;
                 }
 
-                return Qua::Normalize((static_cast<T>(1) - t) * start + e * t);
+                return Qtr::Normalize((static_cast<T>(1) - t) * start + e * t);
             }
         };
 
@@ -27,7 +27,7 @@ namespace glb
             GLB_INLINE static constexpr glbQuat_T<T> call(const glbQuat_T<T>& start, const glbQuat_T<T>& end, T t) noexcept
             {
                 glbQuat_T<T> e = end;
-                T dot = Qua::Dot(start, e);
+                T dot = Qtr::Dot(start, e);
 
                 if (dot < static_cast<T>(0.0))
                 {
@@ -55,7 +55,7 @@ namespace glb
 
 
 
-    namespace Qua
+    namespace Qtr
     {    
         template<typename T>
         GLB_INLINE constexpr glbQuat_T<T> Lerp(const glbQuat_T<T>& start, const glbQuat_T<T>& end, T t) noexcept
@@ -76,17 +76,17 @@ namespace glb
             // clamps t between 0 and 1
             t = std::min(std::max(t, static_cast<T>(0)), static_cast<T>(1));
 
-            // return Qua::slerpUnclamped(start, end, t);
+            // return Qtr::slerpUnclamped(start, end, t);
             return glbIntern::quatSlerpUnclamped<T, glbIntern::useSimd<4, T>::value>::call(start, end, t);
         }
         template<typename T>
         GLB_INLINE constexpr glbQuat_T<T> SlerpUnclamped(const glbQuat_T<T>& start, const glbQuat_T<T>& end, T t) noexcept
         {
-            // return Qua::normalize( start * Qua::pow(Qua::conjugate(start) * end, t) );
+            // return Qtr::normalize( start * Qtr::pow(Qtr::conjugate(start) * end, t) );
 
             return glbIntern::quatSlerpUnclamped<T, glbIntern::useSimd<4, T>::value>::call(start, end, t);
         }
 
-    } // namespace Qua
+    } // namespace Qtr
 
 } // namespace glb

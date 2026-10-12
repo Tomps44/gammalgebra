@@ -6,7 +6,7 @@
 namespace glb
 {
     
-    namespace Qua
+    namespace Qtr
     {
         /// @brief Generates a Quaternion from an axis and an angle 
         /// @param u A unit vector3 deciding which axis to rotate around : `(1, 0, 0)` for `X`, `(0, 1, 0)` for `Y`, `(0, 0, 1)` for `Z`

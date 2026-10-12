@@ -4,7 +4,7 @@
 
 namespace glb
 {
-    namespace Qua
+    namespace Qtr
     {
         template<typename From, typename To>
         GLB_INLINE constexpr glbQuat_T<To> CastTo(const glbQuat_T<From>& q) noexcept
@@ -27,5 +27,5 @@ namespace glb
         }
 
 
-    } // namespace Qua
+    } // namespace Qtr
 } // namespace glb

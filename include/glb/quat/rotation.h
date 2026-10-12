@@ -6,7 +6,7 @@
 
 namespace glb
 {
-    namespace Qua
+    namespace Qtr
     {
         /**
          * Rotates `point` counter-clockwise by the rotation `rot`
@@ -36,7 +36,7 @@ namespace glb
         GLB_INLINE constexpr glbQuat_T<T> FromMat(const glbMat_T<R, C, T>& m) noexcept;
         
         
-    } // namespace Qua
+    } // namespace Qtr
 
     
 } // namespace glb

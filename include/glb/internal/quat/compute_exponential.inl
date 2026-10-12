@@ -5,7 +5,7 @@
 
 namespace glb
 {
-    namespace Qua
+    namespace Qtr
     {
         template<typename T>
         GLB_INLINE constexpr glbQuat_T<T> Exp(const glbQuat_T<T>& q) noexcept
@@ -28,7 +28,7 @@ namespace glb
         template<typename T>
         GLB_INLINE constexpr glbQuat_T<T> Log(const glbQuat_T<T>& q) noexcept
         {
-            const T qLen = Qua::Length(q);
+            const T qLen = Qtr::Length(q);
             const glbVec_T<3, T> imag(q.x, q.y, q.z);
             const T vLen = Vec::Length(imag);
 
@@ -48,17 +48,17 @@ namespace glb
         template<typename T>
         GLB_INLINE constexpr glbQuat_T<T> Pow(const glbQuat_T<T>& q, T exp) noexcept
         {
-            return Qua::Exp(exp * Qua::Log(q));
+            return Qtr::Exp(exp * Qtr::Log(q));
         }
         template<typename T>
         GLB_INLINE constexpr glbQuat_T<T> Sqrt(const glbQuat_T<T>& q) noexcept
         {
-            return Qua::Pow(q, static_cast<T>(0.5));
+            return Qtr::Pow(q, static_cast<T>(0.5));
         }
 
 
         
 
 
-    } // namespace Qua
+    } // namespace Qtr
 } // namespace glb

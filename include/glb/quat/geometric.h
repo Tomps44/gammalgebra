@@ -4,7 +4,7 @@
 
 namespace glb
 {
-    namespace Qua
+    namespace Qtr
     {
         template<typename T>
         GLB_INLINE constexpr T Dot(const glbQuat_T<T>& a, const glbQuat_T<T>& b) noexcept;
@@ -23,7 +23,7 @@ namespace glb
         template<typename T>
         GLB_INLINE constexpr glbQuat_T<T> Inverse(const glbQuat_T<T>& q) noexcept;
 
-    } // namespace Qua
+    } // namespace Qtr
 
 } // namespace glb
 

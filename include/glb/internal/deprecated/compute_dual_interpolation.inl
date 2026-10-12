@@ -35,7 +35,7 @@ namespace glb
         {
             glbDQuat_T<T> e = end;
 
-            if (Qua::Dot(start.real, e.real) < static_cast<T>(0))
+            if (Qtr::Dot(start.real, e.real) < static_cast<T>(0))
             {
                 e = -e;
             }
@@ -49,7 +49,7 @@ namespace glb
             // clamps t between 0 and 1
             t = std::min(std::max(t, static_cast<T>(0)), static_cast<T>(1));
 
-            // return Qua::slerpUnclamped(start, end, t);
+            // return Qtr::slerpUnclamped(start, end, t);
             return DQua::SlerpUnclamped(start, end, t);
         }
         template<typename T>
@@ -60,6 +60,6 @@ namespace glb
             // return glbIntern::quatSlerpUnclamped<T, glbIntern::useSimd<4, T>::value>::call(start, end, t);
         }
 
-    } // namespace Qua
+    } // namespace Qtr
 
 } // namespace glb

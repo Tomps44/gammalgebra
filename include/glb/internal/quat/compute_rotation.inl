@@ -2,7 +2,7 @@
 
 namespace glb
 {    
-    namespace Qua
+    namespace Qtr
     {    
         template<typename T>
         GLB_INLINE constexpr glbVec_T<3, T> RotatePoint(const glbQuat_T<T>& rot, const glbVec_T<3, T>& point) noexcept
@@ -92,12 +92,12 @@ namespace glb
         template<typename T>
         GLB_INLINE constexpr glbQuat_T<T> FromMat(const glbMat_T<4, 4, T>& m) noexcept
         {
-            return Qua::FromMat(static_cast<glbMat_T<3, 3, T>>(m));
+            return Qtr::FromMat(static_cast<glbMat_T<3, 3, T>>(m));
         }
 
 
 
 
-    } // namespace Qua
+    } // namespace Qtr
 
 } // namespace glb

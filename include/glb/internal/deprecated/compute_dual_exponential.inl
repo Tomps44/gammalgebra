@@ -33,8 +33,8 @@ namespace glb
             }
 
             return glbDQuat_T<T>(
-                Qua::Log(copy.real),
-                (copy.dual * Qua::Conjugate(copy.real)) /** static_cast<T>(2.0)*/
+                Qtr::Log(copy.real),
+                (copy.dual * Qtr::Conjugate(copy.real)) /** static_cast<T>(2.0)*/
             );
         }
 
@@ -54,7 +54,7 @@ namespace glb
             }
 
 
-            const glbQuat_T<T> expReal = Qua::Exp(dq.real);
+            const glbQuat_T<T> expReal = Qtr::Exp(dq.real);
 
             return glbDQuat_T<T>(
                 expReal,
@@ -78,5 +78,5 @@ namespace glb
         }
 
 
-    } // namespace Qua
+    } // namespace Qtr
 } // namespace glb

@@ -41,7 +41,7 @@ namespace glb
             {
                 // Conjugué x inverse de la longueur au carré 
 
-                return Qua::Conjugate(q) * (1 / glbIntern::quatDot<T, glbIntern::useSimd<4, T>::value>::call(q, q));
+                return Qtr::Conjugate(q) * (1 / glbIntern::quatDot<T, glbIntern::useSimd<4, T>::value>::call(q, q));
             }
         };
 
@@ -49,7 +49,7 @@ namespace glb
         
     } // namespace glbIntern
     
-    namespace Qua
+    namespace Qtr
     {
         template<typename T>
         GLB_INLINE constexpr T Dot(const glbQuat_T<T>& a, const glbQuat_T<T>& b) noexcept

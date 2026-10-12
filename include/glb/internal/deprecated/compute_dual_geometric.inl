@@ -24,14 +24,14 @@ namespace glb
         template<typename T>
         GLB_INLINE constexpr glbDQuat_T<T> Normalize(const glbDQuat_T<T>& dq) noexcept
         {
-            const T realL = Qua::Length(dq.real);
+            const T realL = Qtr::Length(dq.real);
 
             const glbQuat_T<T> normReal = dq.real / realL;
             const glbQuat_T<T> normDual = dq.dual / realL; 
 
             return glbDQuat_T<T>(
                 normReal,
-                normDual - normReal * (Qua::Dot(normReal, normDual))
+                normDual - normReal * (Qtr::Dot(normReal, normDual))
             );
         }
 
@@ -39,25 +39,25 @@ namespace glb
         GLB_INLINE constexpr glbDQuat_T<T> Conjugate(const glbDQuat_T<T>& dq) noexcept
         {
             return glbDQuat_T<T>(
-                Qua::Conjugate(dq.real),
-                Qua::Conjugate(dq.dual)
+                Qtr::Conjugate(dq.real),
+                Qtr::Conjugate(dq.dual)
             );
         }
 
         template<typename T>
         GLB_INLINE constexpr glbDQuat_T<T> Inverse(const glbDQuat_T<T>& dq) noexcept
         {
-            // const glbQuat_T<T> invReal = Qua::inverse(dq.real);
+            // const glbQuat_T<T> invReal = Qtr::inverse(dq.real);
 
             // return glbDQuat_T<T>(
             //     invReal,
             //     invReal * dq.dual * invReal
             // );
 
-            const T l2 = Qua::LengthSquared(dq.real);
+            const T l2 = Qtr::LengthSquared(dq.real);
             const T l4 = l2 * l2;
 
-            const glbQuat_T<T> conjReal = Qua::Conjugate(dq.real);
+            const glbQuat_T<T> conjReal = Qtr::Conjugate(dq.real);
 
             return glbDQuat_T<T>(
                 conjReal / l2,
@@ -76,7 +76,7 @@ namespace glb
         template<typename T>
         GLB_INLINE constexpr glbVec_T<3, T> GetTranslation(const glbDQuat_T<T>& dq) noexcept
         {
-            glbQuat_T<T> trsl = static_cast<T>(2) * (dq.dual * Qua::Conjugate(dq.real));
+            glbQuat_T<T> trsl = static_cast<T>(2) * (dq.dual * Qtr::Conjugate(dq.real));
             return glbVec_T<3, T>(trsl.x, trsl.y, trsl.z);
         }
 

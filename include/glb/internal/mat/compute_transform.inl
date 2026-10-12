@@ -21,7 +21,7 @@ namespace glb
         template<typename T>
         GLB_INLINE constexpr glbMat_T<4, 4, T> TRS(const glbVec_T<3, T>& trsl, const glbVec_T<3, T>& rot, const glbVec_T<3, T>& scale) noexcept
         {
-            return Mat::TRS(trsl, Qua::FromEuler(rot), scale);
+            return Mat::TRS(trsl, Qtr::FromEuler(rot), scale);
         }
 
 

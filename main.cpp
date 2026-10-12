@@ -14,8 +14,8 @@ int main()
 
     using namespace glb;
 
-    Quat q = Qua::FromEuler(Vec3{0.5f, -30.0f, 60.0f});
-    q = Qua::Log(Qua::Exp(q));
+    Quat q = Qtr::FromEuler(Vec3{0.5f, -30.0f, 60.0f});
+    q = Qtr::Log(Qtr::Exp(q));
 
     for (int i = 0; i < 4; i++)
     {
